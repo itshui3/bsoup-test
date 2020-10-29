@@ -1,22 +1,29 @@
-import urllib.request
+from urllib import request, error
 
 from bs4 import BeautifulSoup
 
-url = 'https://www.youtube.com/'
+url = 'https://www.wuxiaworld.com/novels'
 
 page_html = None
+page = None
 
-try: 
-    page = urllib.request.urlopen(url)
-    page_html = page.read()
-    page.close()
 
-except:
-    print('failed')
+page = request.urlopen(url)
+page_html = page.read()
+page.close()
+
+
 
 # at this point 
 bsoup_page = BeautifulSoup(page_html, features='html.parser')
 
+# print(bsoup_page.prettify())
+
+# Grabbing element entities
+# Grabbing All of a Type
 print(type(bsoup_page))
 
-# id='video-title-link'
+# By ID:
+# bsoup_page.find(id='id_name')
+
+# Goal to find a website, then actually scrape a category
